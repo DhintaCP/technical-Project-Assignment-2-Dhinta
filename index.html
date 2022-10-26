@@ -4,26 +4,60 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <http-equiv="X-UA-Compatible" content="IE-edge">
-        <title>DCP Movie </title>
+        <title>DCP Movies </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-        <!-- navbar -->
         <div class="container-fluid">
             <header style="margin-top:30px; margin:20px 30px;">
-                <nav class="navbar">
-                    <a class="navbar-brand" style="font-size:30px;"><b>DCP Movie</b></a>
-                    <form class="d-flex" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                      <button class="btn btn-success" type="submit">Search</button>
-                    </form>
-                </nav>
+              <nav class="navbar">
+                <a class="navbar-brand" style="font-size:30px;"><b>DCP Movies</b></a>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" id="userInput" type="search" placeholder="Search" aria-label="Search">
+                </form>
+              </nav>
             </header>
-            <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top:20px; margin-top: 20px;">
+        </div>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <img src="assets/pic3.jpg" class="d-block w-100" alt="..." width="100vh" height="500vh">
+              </div>
+              <div class="carousel-item active">
+                <img src="assets/pict5.jpg" class="d-block w-100" alt="..." width="100vh" height="500vh">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/pict1.png" class="d-block w-100" alt="..." width="100vh" height="500vh">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+            <div class="container-fluid">
+                <div id="error-not-found" style="display: none;">
+                    <h3 class="text-danger mt-5 text-center">Movie Not Found</h3>
                 
-                <!-- CARD1 -->
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="list-data" style="margin-top:20px; margin-top: 20px;" >
+                </div>
+            </div>
+
+                <!-- CARD1 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pict1.png" class="card-img-top" alt="...">
@@ -42,7 +76,7 @@
                     </div>
                 </div>
 
-                <!-- CARD2 -->
+                 CARD2
                 <div class="col">
                   <div class="card">
                       <img src="assets/pic2.jpg" class="card-img-top" alt="...">
@@ -61,7 +95,7 @@
                   </div>
               </div>
 
-                <!-- CARD3 -->
+                 CARD3 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pic3.jpg" class="card-img-top" alt="...">
@@ -80,7 +114,7 @@
                     </div>
                 </div>
 
-                <!-- CARD4 -->
+               CARD4 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pict4.jpg" class="card-img-top" alt="...">
@@ -99,7 +133,7 @@
                     </div>
                 </div>
 
-                <!-- CARD5 -->
+                 CARD5 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pict5.jpg" class="card-img-top" alt="...">
@@ -118,7 +152,7 @@
                     </div>
                 </div>
 
-                <!-- CARD6 -->
+                 CARD6 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pict6.jpg" class="card-img-top" alt="...">
@@ -137,7 +171,7 @@
                     </div>
                 </div>
 
-                <!-- CARD7 -->
+                 CARD7 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pict7.jpg" class="card-img-top" alt="...">
@@ -156,7 +190,7 @@
                     </div>
                 </div>
 
-                <!-- CARD8 -->
+                 CARD8 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pict8.jpg" class="card-img-top" alt="...">
@@ -175,7 +209,7 @@
                     </div>
                 </div>
 
-                <!-- CARD9 -->
+                 CARD9 
                 <div class="col">
                     <div class="card">
                         <img src="assets/pict9.jpg" class="card-img-top" alt="...">
@@ -192,9 +226,7 @@
                             <small>20 Oktober 2022</small>
                         </div>            
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> -->
 
         <script src="script.js"></script>
     </body>
