@@ -576,70 +576,114 @@ const movies = [
   },
 ];
 
-let searchValue = "";
+// let searchValue = "";
 
-function searchMovie() {
-  setTimeout(() => {
-    search();
-  }, 100);
+// function searchMovie() {
+//   setTimeout(() => {
+//     search();
+//   }, 100);
+// }
+
+// function search() {
+//   const inputElement = document.getElementById("search");
+//   searchValue = inputElement.value || "";
+//   console.log(searchValue);
+//   const dataMovies = searchValue ? movies.filter((m) => m.title.trim().toUpperCase().includes(searchValue.trim().toUpperCase())) : movies;
+//   const listMovies = document.getElementById("list-movies");
+//   const notFound = document.getElementById("msg-not-found");
+//   if (!dataMovies.length) {
+//     notFound.classList.remove("d-none");
+//   } else {
+//     notFound.classList.add("d-none");
+//   }
+
+//   let showMovies = "";
+//   for (let i = 0; i < dataMovies.length; i++) {
+//     const movie = dataMovies[i];
+//     const temp = `
+//         <div class="col">
+//           <div class="card">
+//             <img src="${movie.poster_path}" class="card-img-top" alt="movie-img" height="400">
+//             <div class="card-body">
+//               <div class="d-flex justify-content-between">
+//                 <p class="fs-5">${movie.title}</p>
+//                 <p class="fs-5"><b>${movie.vote_average}</b></p>
+//               </div>
+//               <p class="mt-2 fs-5">${movie.release_date}</p>
+//             </div>
+//           </div>
+//         </div>
+//       `;
+//     showMovies += temp;
+//   }
+//   listMovies.innerHTML = showMovies;
+// }
+
+// search();
+
+
+//FITUR SEARCH
+function searchMovies(keyword =''){
+  const searchValue = String(keyword).toUpperCase().trim()
+  return searchValue
 }
 
-function search() {
-  const inputElement = document.getElementById("search");
-  searchValue = inputElement.value || "";
-  console.log(searchValue);
-  const dataMovies = searchValue ? movies.filter((m) => m.title.trim().toUpperCase().includes(searchValue.trim().toUpperCase())) : movies;
-  const listMovies = document.getElementById("list-movies");
-  const notFound = document.getElementById("msg-not-found");
-  if (!dataMovies.length) {
-    notFound.classList.remove("d-none");
-  } else {
-    notFound.classList.add("d-none");
-  }
+function getMovies (keyword =''){
+  let filteringMovies = movies.filter((element) => {
+    const movieTitle = String(element.title).toUpperCase().trim()
+    return movieTitle.includes(searchMovies(keyword))
+  })
+  return filteringMovies
+}
 
-  let showMovies = "";
-  for (let i = 0; i < dataMovies.length; i++) {
-    const movie = dataMovies[i];
-    const temp = `
-        <div class="col">
-          <div class="card">
-            <img src="${movie.poster_path}" class="card-img-top" alt="movie-img" height="400">
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <p class="fs-5">${movie.title}</p>
-                <p class="fs-5"><b>${movie.vote_average}</b></p>
-              </div>
-              <p class="mt-2 fs-5">${movie.release_date}</p>
-            </div>
+
+console.log(getMovies('Fall'))
+console.log(getMovies('          Groot Takes a Bath         '))
+
+//MEMBUAT CARD
+const elListData = document.getElementById('list-data')
+
+const searchBar = document.getElementById('userInput')
+// let filtergalery= []
+// filtergalery=movies
+
+searchBar.addEventListener('keyup',(e)=>{
+  let searchInput=e.target.value
+  // let searchFilm= searchMovies(searchInput)
+  // console.log(searchFilm,"ini search")
+  let filterSomething= getMovies(searchInput)
+  console.log(filterSomething,"ini filter")
+  if(searchInput==""){
+    showMovies(movies);
+  }else{
+    if(filterSomething == ""){
+        document.getElementById("error-not-found").style.display = 'block'
+        document.getElementById("list-data").innerHTML = ""; 
+    }else{
+        console.log(showMovies(filterSomething,"ini apa"))
+        showMovies(filterSomething);
+        document.getElementById("error-not-found").style.display = 'none'
+    }
+  }
+})
+
+function showMovies(keyword=""){
+let dataMovies= keyword
+  let contentData = ''
+  dataMovies.forEach(property => {
+    contentData += `
+      <div class="col">
+        <div class="card">
+          <img src="${property.poster_path}" class="card-img-top" alt="img-cat">
+          <div class="card-body">
+            <h5 class="card-title">${property.title}</h5>
+            <p class="card-text">${property.overview}</p>
           </div>
         </div>
-      `;
-    showMovies += temp;
-  }
-  listMovies.innerHTML = showMovies;
+      </div>
+    `
+  })
+  elListData.innerHTML=contentData
 }
 
-search();
-  
-  
-  // function searchMovies(keyword =''){
-  //   const searchValue = String(keyword).toUpperCase().trim()
-  //   return searchValue
-  // }
-  
-  // function getMovies (keyword =''){
-  //   let filteringmovies = movies.filter((element) => {
-  //     const movieTitle = String(element.title).toUpperCase().trim()
-  //     return movieTitle.includes(searchMovies(keyword))
-  //   })
-  //   if (filteringmovies.length>0){
-  //     return filteringmovies
-  //   }else{
-  //     return movies
-  //   }
-  // }
-  
-  
-  // console.log(getMovies('Fall'))
-  // console.log(getMovies('          Groot Takes a Bath         '))
-  
+showMovies(movies)
